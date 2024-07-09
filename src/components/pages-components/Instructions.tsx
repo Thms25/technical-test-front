@@ -21,7 +21,7 @@ export const Instructions = () => {
         allow for some symbols to act as modifiers for the search.{' '}
       </Text>
       <br />
-      <Text>
+      <Box>
         Some examples include:
         <List>
           <List.Item>
@@ -49,11 +49,11 @@ export const Instructions = () => {
             </Anchor>
           </List.Item>
         </List>
-      </Text>
+      </Box>
       <Title mt="md" order={2}>
         Specs
       </Title>
-      <Text>
+      <Box>
         Your spotlight:
         <List>
           <List.Item>
@@ -106,11 +106,11 @@ export const Instructions = () => {
         <br />
         The exact style of the spotlight, and the way in which results are
         displayed is intentionally left up to the implementer.
-      </Text>
+      </Box>
       <Title mt="md" order={3}>
         2. Users
       </Title>
-      <Text>
+      <Box>
         By prefixing the search with <Kbd>@</Kbd>, the user can switch to a mode
         in which he is now searching for users, rather than pages. The matching
         substring will agai be highlighted.
@@ -123,7 +123,7 @@ export const Instructions = () => {
         <br />
         <br />
         Erasing the<Kbd>@</Kbd> will mean we search through pages again.
-      </Text>
+      </Box>
       <Title mt="md" order={2}>
         Implementation
       </Title>

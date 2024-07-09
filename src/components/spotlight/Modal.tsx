@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { loadUsers } from '../../api'
 
 import { User } from '../../utils/types'
+import Search from './Search'
 
 export default function Modal({ hadnleClose }: { hadnleClose: () => void }) {
   const [opened, setOpened] = useState(false)
@@ -41,7 +42,7 @@ export default function Modal({ hadnleClose }: { hadnleClose: () => void }) {
         out: { opacity: 0 },
         transitionProperty: 'trasnform, opacity',
       }}
-      duration={400}
+      duration={300}
       timingFunction="ease"
     >
       {styles => (
@@ -59,7 +60,13 @@ export default function Modal({ hadnleClose }: { hadnleClose: () => void }) {
               w={{ base: '90%', sm: '50%' }}
             >
               <Stack ref={ref} align="center" justify="center" gap="md">
-                <h1>Modal</h1>
+                <Search
+                  users={users}
+                  handleSelect={() => {
+                    setOpened(false)
+                    hadnleClose()
+                  }}
+                />
               </Stack>
             </Paper>
           </Backdrop>

@@ -17,6 +17,7 @@ import { useHotkeys } from '@mantine/hooks'
 // Utils
 import pages from './pages.json'
 import Modal from './components/spotlight/Modal'
+import { User } from './components/pages-components/User'
 
 // -------------------------------------------------
 
@@ -73,15 +74,16 @@ export const App = () => {
   ]
   const [modalOpen, setModalOpen] = useState(false)
   useHotkeys([
-    ['ctrl+K', () => setModalOpen(true)],
-    ['mod+K', () => setModalOpen(true)],
+    ['ctrl+P', () => setModalOpen(true)],
+    ['mod+P', () => setModalOpen(true)],
+    ['/', () => setModalOpen(true)],
   ])
 
   const close = () => {
     // wait for animation to end to close
     setTimeout(() => {
       setModalOpen(false)
-    }, 400)
+    }, 300)
   }
 
   return (
@@ -142,6 +144,7 @@ export const App = () => {
               )}
             </>
           ))}
+          <Route path="/user/:name" element={<User />} />
         </Routes>
       </AppShell.Main>
     </AppShell>
