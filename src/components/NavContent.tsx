@@ -17,7 +17,7 @@ export default function NavContent() {
             >
               {item.children.map(child => (
                 <NavLink
-                  key={child.name}
+                  key={child.name + item.title}
                   href={`/${item.title}/${child.name}`}
                   label={child.name}
                   c="myColor.0"

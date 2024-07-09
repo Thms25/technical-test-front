@@ -29,6 +29,9 @@ export const App = () => {
     }, 300)
   }
 
+  const navWithChild = navItems.filter(item => item.children.length > 0)
+  const navWithoutChild = navItems.filter(item => !item.children.length)
+
   return (
     <AppShell
       padding="md"
@@ -51,29 +54,23 @@ export const App = () => {
       </AppShell.Navbar>
       <AppShell.Main bg="myColor.2">
         <Routes>
-          {navItems.map(item => (
-            <>
-              {item.children.length ? (
+          {navWithChild.map(item => (
+            <Route
+              key={item.to}
+              path={item.to}
+              element={<item.component></item.component>}
+            >
+              {item.children.map((child, index) => (
                 <Route
-                  key={item.to}
-                  path={item.to}
-                  element={<item.component></item.component>}
-                >
-                  {item.children.map((child, index) => (
-                    <Route
-                      key={index}
-                      path={`/${item.title.toLowerCase()}/${child.name.toLowerCase()}`}
-                    />
-                  ))}
-                </Route>
-              ) : (
-                <Route
-                  key={item.to}
-                  path={item.to}
-                  element={<item.component />}
+                  key={index}
+                  path={`/${item.title.toLowerCase()}/${child.name.toLowerCase()}`}
+                  element={<h1>{child.name}</h1>}
                 />
-              )}
-            </>
+              ))}
+            </Route>
+          ))}
+          {navWithoutChild.map(item => (
+            <Route key={item.to} path={item.to} element={<item.component />} />
           ))}
           <Route path="/user/:name" element={<User />} />
         </Routes>
