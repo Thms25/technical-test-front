@@ -13,7 +13,6 @@
     {"name": "Project", "category": "Analytics"},
     {"name": "Billing", "category": "Settings"},
     {"name": "Users", "category": "Settings"},
-    {"name": "Billing", "category": "Settings"},
     {"name": "Company", "category": "Settings"},
     {"name": "Usage", "category": "Logs"},
     {"name": "Performance", "category": "Logs"},
