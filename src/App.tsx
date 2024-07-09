@@ -1,77 +1,20 @@
 // Components
 import { AppShell, Flex, Title } from '@mantine/core'
-import { Instructions } from './components/pages-components/Instructions'
-import { Home } from './components/Home'
-import { Analytics } from './components/pages-components/Analytics'
-import { Dashboard } from './components/pages-components/Dashboard'
-import { Help } from './components/pages-components/Help'
-import { Logs } from './components/pages-components/Logs'
-import { Reports } from './components/pages-components/Reports'
-import { Settings } from './components/pages-components/Settings'
 
 // Hooks
-import { Link, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { useState } from 'react'
 import { useHotkeys } from '@mantine/hooks'
 
 // Utils
-import pages from './pages.json'
 import Modal from './components/spotlight/Modal'
 import { User } from './components/pages-components/User'
+import { navItems } from './utils/nav-items'
+import NavContent from './components/NavContent'
 
 // -------------------------------------------------
 
 export const App = () => {
-  const navItems = [
-    {
-      title: 'Home',
-      to: '/',
-      component: Home,
-      children: [],
-    },
-    {
-      title: 'Instructions',
-      to: '/instructions',
-      component: Instructions,
-      children: [],
-    },
-    {
-      title: 'Analytics',
-      to: '/analytics',
-      component: Analytics,
-      children: pages.subcategories.filter(cat => cat.category === 'Analytics'),
-    },
-    {
-      title: 'Dashboard',
-      to: '/dashboard',
-      component: Dashboard,
-      children: pages.subcategories.filter(cat => cat.category === 'Dashboard'),
-    },
-    {
-      title: 'Settings',
-      to: '/settings',
-      component: Settings,
-      children: pages.subcategories.filter(cat => cat.category === 'Settings'),
-    },
-    {
-      title: 'Help',
-      to: '/help',
-      component: Help,
-      children: pages.subcategories.filter(cat => cat.category === 'Help'),
-    },
-    {
-      title: 'Logs',
-      to: '/logs',
-      component: Logs,
-      children: pages.subcategories.filter(cat => cat.category === 'Logs'),
-    },
-    {
-      title: 'Reports',
-      to: '/reports',
-      component: Reports,
-      children: pages.subcategories.filter(cat => cat.category === 'Reports'),
-    },
-  ]
   const [modalOpen, setModalOpen] = useState(false)
   useHotkeys([
     ['ctrl+P', () => setModalOpen(true)],
@@ -104,19 +47,7 @@ export const App = () => {
         </Flex>
       </AppShell.Header>
       <AppShell.Navbar p="md" bg="myColor.3" withBorder={false}>
-        {navItems.map(item => (
-          <Link
-            key={item.to}
-            to={item.to}
-            style={{
-              textDecoration: 'none',
-            }}
-          >
-            <Title c="myColor.0" order={4}>
-              {item.title}
-            </Title>
-          </Link>
-        ))}
+        <NavContent />
       </AppShell.Navbar>
       <AppShell.Main bg="myColor.2">
         <Routes>

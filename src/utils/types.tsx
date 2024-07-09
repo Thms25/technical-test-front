@@ -8,3 +8,10 @@ export type searchItem = {
   name: string
   category?: string
 }
+
+export type navItem = {
+  title: string
+  to: string
+  component: any
+  children?: any[]
+}

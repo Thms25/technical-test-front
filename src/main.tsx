@@ -4,7 +4,12 @@ import { App } from './App.tsx'
 
 import '@mantine/core/styles.css'
 
-import { createTheme, MantineColorsTuple, MantineProvider } from '@mantine/core'
+import {
+  createTheme,
+  MantineColorsTuple,
+  MantineProvider,
+  NavLink,
+} from '@mantine/core'
 import { BrowserRouter } from 'react-router-dom'
 
 const myColor: MantineColorsTuple = [
